@@ -27,6 +27,11 @@ const initCommand = () => {
 
   shell.cp(path.join(sourceFolder, 'cypress.json'), process.cwd())
   shell.cp('-r', path.join(sourceFolder, 'cypress'), process.cwd())
+  debug('done copying files from %s', sourceFolder)
+
+  console.log('✅ scaffolded "cypress" folder with a single example spec')
+  console.log('you can configure additional options in cypress.json file')
+  console.log('see https://on.cypress.io/configuration')
 }
 
 // eslint-disable-next-line no-unused-expressions
