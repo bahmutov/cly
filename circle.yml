@@ -1,17 +1,24 @@
-version: 2.1
-orbs:
-  cypress: cypress-io/cypress@1
+version: 2
 jobs:
-  release:
-    executor: cypress/base-10
-    steps:
-      - attach_workspace:
-          at: ~/
-      - run: npm run semantic-release
-workflows:
   build:
+    docker:
+    - image: circleci/node:10
+    working_directory: ~/repo
+    steps:
+    - checkout
+    - restore_cache:
+        keys:
+        - v1-dependencies-{{ checksum "package.json" }}
+        - v1-dependencies-
+    - run: npm ci
+    - save_cache:
+        paths:
+        - ~/.npm
+        key: v1-dependencies-{{ checksum "package.json" }}
+    - run: npm test
+    - run: npm run semantic-release
+workflows:
+  version: 2
+  workflow:
     jobs:
-      - cypress/install
-      - release:
-          requires:
-            - cypress/install
+    - build
