@@ -9,15 +9,25 @@
 [![standard][standard-image]][standard-url]
 [![renovate-app badge][renovate-badge]][renovate-app]
 
-## Install
+## Use
 
-Requires [Node](https://nodejs.org/en/) version 6 or above.
+Requires [Node](https://nodejs.org/en/) version 8 or above with `npx` command, assumes you have installed Cypress already with `npm i -D cypress`
 
 ```sh
-npm install --save @bahmutov/cly
+npx @bahmutov/cly init
 ```
 
-## Use
+Will output something like the following text on success
+
+```sh
+npx: installed 72 in 6.853s
+scaffolding new Cypress project
+✅ scaffolded "cypress" folder with a single example spec
+you can configure additional options in cypress.json file
+see https://on.cypress.io/configuration
+```
+
+Note: if there are Cypress files or folders already, the `cly` will stop
 
 ### Small print
 
