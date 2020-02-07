@@ -1,9 +1,12 @@
 {
-  "extends": ["config:base"],
+  "extends": [
+    "config:base"
+  ],
   "automerge": true,
   "major": {
     "automerge": false
   },
   "lockFileMaintenance": true,
-  "rangeStrategy": "pin"
+  "rangeStrategy": "pin",
+  "masterIssue": true
 }
