@@ -29,6 +29,14 @@ see https://on.cypress.io/configuration
 
 Note: if there are Cypress files or folders already, the `cly` will stop
 
+### Version
+
+You can specify version to scaffold using `--cv, --cypress-version <version>` argument. For example to scaffold for Cypress v4 run
+
+```sh
+npx @bahmutov/cly init --cv 4
+```
+
 ### Small print
 
 Author: Gleb Bahmutov &lt;gleb.bahmutov@gmail.com&gt; &copy; 2019

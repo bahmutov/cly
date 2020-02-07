@@ -6,9 +6,9 @@ const shell = require('shelljs')
 const debug = require('debug')('@bahmutov/cly')
 const path = require('path')
 
-const noOptions = () => {}
+const initCommand = args => {
+  debug('command arguments %o', args)
 
-const initCommand = () => {
   console.log('scaffolding new Cypress project')
   debug('working directory %s', process.cwd())
 
@@ -21,27 +21,51 @@ const initCommand = () => {
     process.exit(1)
   }
 
-  // TODO find Cypress version from package.json
-  const cypressVersion = '3'
-  const sourceFolder = path.join(__dirname, '..', cypressVersion)
+  if (!args.cypressVersion) {
+    throw new Error('Unknown Cypress version to scaffold')
+  }
+
+  const DEFAULT_SCAFFOLD_VERSION = '4'
+  let scaffoldedVersion = args.cypressVersion
+  let sourceFolder = path.join(__dirname, '..', scaffoldedVersion)
+  if (!shell.test('-d', sourceFolder)) {
+    console.error(
+      'WARNING: do not have scaffold for Cypress version %s',
+      scaffoldedVersion
+    )
+    console.error('Will scaffold for version %s', DEFAULT_SCAFFOLD_VERSION)
+    scaffoldedVersion = DEFAULT_SCAFFOLD_VERSION
+    sourceFolder = path.join(__dirname, '..', scaffoldedVersion)
+  }
 
   shell.cp(path.join(sourceFolder, 'cypress.json'), process.cwd())
   shell.cp('-r', path.join(sourceFolder, 'cypress'), process.cwd())
   debug('done copying files from %s', sourceFolder)
 
-  console.log('✅ scaffolded "cypress" folder with a single example spec')
+  console.log(
+    '✅ scaffolded "cypress" folder with a single example spec (v%s)',
+    scaffoldedVersion
+  )
   console.log('you can configure additional options in cypress.json file')
   console.log('see https://on.cypress.io/configuration')
 }
 
 // eslint-disable-next-line no-unused-expressions
 require('yargs')
-  .command(
-    ['init', 'scaffold'],
-    'scaffold Cypress tests',
-    noOptions,
-    initCommand
-  )
+  .command({
+    command: 'init',
+    aliases: 'scaffold',
+    desc: 'scaffold Cypress tests',
+    builder: {
+      cypressVersion: {
+        default: '4',
+        alias: 'cv',
+        desc: 'for Cypress version',
+        type: 'string'
+      }
+    },
+    handler: initCommand
+  })
   .demandCommand()
   .help()
   .wrap(72).argv

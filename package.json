@@ -30,7 +30,8 @@
   "files": [
     "src/*.js",
     "!src/*-spec.js",
-    "3"
+    "3",
+    "4"
   ],
   "homepage": "https://github.com/bahmutov/cly#readme",
   "keywords": [
