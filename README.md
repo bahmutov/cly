@@ -37,6 +37,13 @@ You can specify version to scaffold using `--cv, --cypress-version <version>` ar
 npx @bahmutov/cly init --cv 4
 ```
 
+Only the major version will be considered
+
+```sh
+npx @bahmutov/cly init --cypress-version 3.8.3
+✅ scaffolded "cypress" folder with a single example spec (v3)
+```
+
 ### Small print
 
 Author: Gleb Bahmutov &lt;gleb.bahmutov@gmail.com&gt; &copy; 2019

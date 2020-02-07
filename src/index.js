@@ -27,6 +27,12 @@ const initCommand = args => {
 
   const DEFAULT_SCAFFOLD_VERSION = '4'
   let scaffoldedVersion = args.cypressVersion
+
+  if (scaffoldedVersion.indexOf('.')) {
+    scaffoldedVersion = scaffoldedVersion.split('.')[0]
+    debug('extracted major version %s', scaffoldedVersion)
+  }
+
   let sourceFolder = path.join(__dirname, '..', scaffoldedVersion)
   if (!shell.test('-d', sourceFolder)) {
     console.error(
