@@ -77,8 +77,8 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 [npm-icon]: https://nodei.co/npm/@bahmutov/cly.svg?downloads=true
 [npm-url]: https://npmjs.org/package/@bahmutov/cly
-[ci-image]: https://circleci.com/gh/bahmutov/private-module-example-user.svg?style=svg&circle-token=61ab69633676370401cf1373850ef419cb619685
-[ci-url]: https://circleci.com/gh/bahmutov/private-module-example-user
+[ci-image]: https://circleci.com/gh/bahmutov/cly/tree/master.svg?style=svg
+[ci-url]: https://circleci.com/gh/bahmutov/cly/tree/master
 [semantic-image]: https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg
 [semantic-url]: https://github.com/semantic-release/semantic-release
 [standard-image]: https://img.shields.io/badge/code%20style-standard-brightgreen.svg
