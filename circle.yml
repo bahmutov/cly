@@ -71,6 +71,10 @@ workflows:
         requires:
           - build
     - release:
+        filters:
+          branches:
+            only:
+              - master
         requires:
           - build
           - test-4
