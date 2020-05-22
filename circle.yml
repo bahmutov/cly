@@ -51,6 +51,24 @@ jobs:
             npm init -y
             npm i -D cypress@4
             node ~/repo/src/index.js init
+            npx cypress run
+
+  test-4-typescript:
+    executor: cypress/base-12
+    working_directory: ~/repo
+    steps:
+      - load_workspace
+      - run:
+          name: Test scaffolding Cypress v4 in TypeScript
+          environment:
+            DEBUG: '@bahmutov/cly'
+          command: |
+            mkdir /tmp/test-4
+            cd /tmp/test-4
+            npm init -y
+            npm i -D cypress@4
+            node ~/repo/src/index.js init --typescript
+            npx cypress run
 
   release:
     executor: cypress/base-12
@@ -70,6 +88,9 @@ workflows:
     - test-4:
         requires:
           - build
+    - test-4-typescript:
+        requires:
+          - build
     - release:
         filters:
           branches:
@@ -78,3 +99,4 @@ workflows:
         requires:
           - build
           - test-4
+          - test-4-typescript

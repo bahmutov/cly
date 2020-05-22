@@ -17,6 +17,14 @@ context('Example Cypress TodoMVC test', () => {
     cy.get('.todo-list li').should('have.length', 2)
   })
 
+  it('calls custom commands from support file', () => {
+    cy.customCommand().should('equal', 42)
+  })
+
+  it('calls into plugins process via cy.task', () => {
+    cy.task('Hello Node!')
+  })
+
   // more examples
   //
   // https://github.com/cypress-io/cypress-example-todomvc
