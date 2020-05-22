@@ -41,6 +41,16 @@ jobs:
     working_directory: ~/repo
     steps:
       - load_workspace
+      - run:
+          name: Test scaffolding Cypress v4
+          environment:
+            DEBUG: '@bahmutov/cly'
+          command: |
+            mkdir /tmp/test-4
+            cd /tmp/test-4
+            npm init -y
+            npm i -D cypress@4
+            node ~/repo/src/index.js init
 
   release:
     executor: cypress/base-12
