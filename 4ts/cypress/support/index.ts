@@ -13,3 +13,6 @@
 // You can read more here:
 // https://on.cypress.io/configuration
 // ***********************************************************
+Cypress.Commands.add('customCommand', () => {
+  return cy.wrap(42)
+})
