@@ -79,7 +79,6 @@ jobs:
           name: NPM publish 🚀
           command: npm run semantic-release
 
-
 workflows:
   version: 2
   workflow:
@@ -88,9 +87,13 @@ workflows:
     - test-4:
         requires:
           - build
-    - test-4-typescript:
-        requires:
-          - build
+
+    # disable for now until full TypeScript is passing
+    # https://github.com/cypress-io/cypress/issues/7459
+    # probably Cypress v4.6.1+
+    # - test-4-typescript:
+    #     requires:
+    #       - build
     - release:
         filters:
           branches:

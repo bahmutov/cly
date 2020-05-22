@@ -23,6 +23,8 @@ module.exports = (on, config) => {
     log(x) {
       // prints into the terminal's console
       console.log(x)
+
+      return null
     }
   })
 }

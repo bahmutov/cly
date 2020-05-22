@@ -22,7 +22,7 @@ context('Example Cypress TodoMVC test', () => {
   })
 
   it('calls into plugins process via cy.task', () => {
-    cy.task('Hello Node!')
+    cy.task('log', 'Hello Node!')
   })
 
   // more examples
