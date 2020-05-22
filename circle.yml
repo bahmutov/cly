@@ -6,11 +6,23 @@ orbs:
   # Cypress orb makes it simple to install, cache and run Cypress tests
   # https://github.com/cypress-io/circleci-orb
   cypress: cypress-io/cypress@1
+
+commands:
+  save_workspace:
+    steps:
+      - persist_to_workspace:
+          root: ~/
+          paths:
+            - repo
+
+  load_workspace:
+    steps:
+      - attach_workspace:
+          at: ~/
+
 jobs:
   build:
-    executor:
-      name: node/default
-      tag: '12'
+    executor: cypress/base-12
     working_directory: ~/repo
     steps:
       - checkout
@@ -19,14 +31,36 @@ jobs:
             - run:
                 name: install dependencies 📦
                 command: npm ci
+      - save_workspace
       - run:
           name: run tests 🧪
           command: npm test
+
+  test-4:
+    executor: cypress/base-12
+    working_directory: ~/repo
+    steps:
+      - load_workspace
+
+  release:
+    executor: cypress/base-12
+    working_directory: ~/repo
+    steps:
+      - load_workspace
       - run:
           name: NPM publish 🚀
           command: npm run semantic-release
+
+
 workflows:
   version: 2
   workflow:
     jobs:
     - build
+    - test-4:
+        requires:
+          - build
+    - release:
+        requires:
+          - build
+          - test-4
