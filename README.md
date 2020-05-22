@@ -27,7 +27,17 @@ you can configure additional options in cypress.json file
 see https://on.cypress.io/configuration
 ```
 
-Note: if there are Cypress files or folders already, the `cly` will stop
+### TypeScript
+
+You can scaffold Cypress specs written in TypeScript
+
+```sh
+npx @bahmutov/cly init --typescript
+# or equivalent
+npx @bahmutov/cly init -t
+```
+
+Note: if there are Cypress files or folders already, the `cly` will stop.
 
 ### Version
 
@@ -42,6 +52,16 @@ Only the major version will be considered
 ```sh
 npx @bahmutov/cly init --cypress-version 3.8.3
 ✅ scaffolded "cypress" folder with a single example spec (v3)
+```
+
+Notice that example folders for TypeScript have format `<major version>ts`.
+
+## Debugging
+
+Run this module with environment variable to see verbose logs
+
+```
+DEBUG=@bahmutov/cly
 ```
 
 ### Small print

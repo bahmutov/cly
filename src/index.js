@@ -34,6 +34,12 @@ const initCommand = args => {
   }
 
   let sourceFolder = path.join(__dirname, '..', scaffoldedVersion)
+
+  if (args.typescript) {
+    debug('scaffolding TypeScript specs')
+    sourceFolder += 'ts'
+  }
+
   if (!shell.test('-d', sourceFolder)) {
     console.error(
       'WARNING: do not have scaffold for Cypress version %s',
@@ -68,6 +74,12 @@ require('yargs')
         alias: 'cv',
         desc: 'for Cypress version',
         type: 'string'
+      },
+      typescript: {
+        default: false,
+        alias: 't',
+        desc: 'scaffold using TypeScript',
+        type: 'boolean'
       }
     },
     handler: initCommand
