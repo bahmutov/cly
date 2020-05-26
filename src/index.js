@@ -40,9 +40,11 @@ const initCommand = args => {
     sourceFolder += 'ts'
   }
 
+  debug('checking if folder "%s" exists', sourceFolder)
   if (!shell.test('-d', sourceFolder)) {
     console.error(
-      'WARNING: do not have scaffold for Cypress version %s',
+      'WARNING: do not have scaffold %s for Cypress version %s',
+      sourceFolder,
       scaffoldedVersion
     )
     console.error('Will scaffold for version %s', DEFAULT_SCAFFOLD_VERSION)
@@ -50,6 +52,7 @@ const initCommand = args => {
     sourceFolder = path.join(__dirname, '..', scaffoldedVersion)
   }
 
+  debug('using scaffold folder %s', sourceFolder)
   shell.cp(path.join(sourceFolder, 'cypress.json'), process.cwd())
   shell.cp('-r', path.join(sourceFolder, 'cypress'), process.cwd())
   debug('done copying files from %s', sourceFolder)
