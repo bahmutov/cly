@@ -74,7 +74,7 @@
     "pretest": "npm run lint",
     "pretty": "prettier-standard 'src/*.js'",
     "secure": "nsp check",
-    "size": "t=\"$(npm pack .)\"; wc -c \"${t}\"; tar tvf \"${t}\"; rm \"${t}\";",
+    "size": "npm pack --dry",
     "test": "npm run unit",
     "unit": "mocha src/*-spec.js",
     "unused-deps": "dependency-check --unused --no-dev .",
