@@ -9,7 +9,11 @@ const path = require('path')
 const initCommand = args => {
   debug('command arguments %o', args)
 
-  console.log('scaffolding new Cypress project')
+  if (args.typescript) {
+    console.log('scaffolding new Cypress TypeScript project')
+  } else {
+    console.log('scaffolding new Cypress project')
+  }
   debug('working directory %s', process.cwd())
 
   if (shell.test('-d', 'cypress')) {
