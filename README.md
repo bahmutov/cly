@@ -1,4 +1,4 @@
-# @bahmutov/cly
+# @bahmutov/cly [![gh status][gh image]][gh url]
 
 > A prototype of Cypress CLI for quicker project scaffolding
 
@@ -112,3 +112,6 @@ OTHER DEALINGS IN THE SOFTWARE.
 [standard-url]: http://standardjs.com/
 [renovate-badge]: https://img.shields.io/badge/renovate-app-blue.svg
 [renovate-app]: https://renovateapp.com/
+
+[gh image]: https://github.com/bahmutov/cly/workflows/ci/badge.svg?branch=master
+[gh url]: https://github.com/bahmutov/cly/actions
