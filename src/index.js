@@ -59,6 +59,9 @@ const initCommand = args => {
   debug('using scaffold folder %s', sourceFolder)
   shell.cp(path.join(sourceFolder, 'cypress.json'), process.cwd())
   shell.cp('-r', path.join(sourceFolder, 'cypress'), process.cwd())
+  if (args.typescript) {
+    shell.cp(path.join(sourceFolder, 'tsconfig.json'), process.cwd())
+  }
   debug('done copying files from %s', sourceFolder)
 
   console.log(
