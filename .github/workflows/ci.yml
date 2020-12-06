@@ -24,7 +24,7 @@ jobs:
           npm init -y
           npm i -D cypress
           npm i cypress-expect
-          node ~/repo/src/index.js init
+          node /home/runner/work/cly/cly/src/index.js init
           npx cypress-expect run --passing 1
 
       - name: Semantic Release 🚀
