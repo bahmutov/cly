@@ -102,7 +102,7 @@ jobs:
             cd /tmp/test-6
             npm init -y
             npm i -D cypress@6
-            npm i cypress-expect
+            npm i cypress-expect typescript
             node ~/repo/src/index.js init --typescript
             npx cypress-expect run --passing 3
 
