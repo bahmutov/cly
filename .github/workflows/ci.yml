@@ -18,6 +18,7 @@ jobs:
 
       - name: Run e2e test 🚀
         run: |
+          echo $PWD
           mkdir /tmp/test-6
           cd /tmp/test-6
           npm init -y
