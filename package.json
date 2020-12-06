@@ -32,7 +32,9 @@
     "!src/*-spec.js",
     "3",
     "4",
-    "4ts"
+    "4ts",
+    "6",
+    "6ts"
   ],
   "homepage": "https://github.com/bahmutov/cly#readme",
   "keywords": [
