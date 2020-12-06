@@ -17,7 +17,7 @@ jobs:
         run: npm test
 
       - name: Run e2e test 🚀
-        command: |
+        run: |
           mkdir /tmp/test-6
           cd /tmp/test-6
           npm init -y
