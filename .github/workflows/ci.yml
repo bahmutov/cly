@@ -16,6 +16,16 @@ jobs:
       - name: Run tests 🧪
         run: npm test
 
+      - name: Run e2e test 🚀
+        command: |
+          mkdir /tmp/test-6
+          cd /tmp/test-6
+          npm init -y
+          npm i -D cypress
+          npm i cypress-expect
+          node ~/repo/src/index.js init
+          npx cypress-expect run --passing 1
+
       - name: Semantic Release 🚀
         uses: cycjimmy/semantic-release-action@v2
         env:
