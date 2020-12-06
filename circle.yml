@@ -98,6 +98,7 @@ jobs:
           environment:
             DEBUG: '@bahmutov/cly'
           command: |
+            echo $PWD
             mkdir /tmp/test-6
             cd /tmp/test-6
             npm init -y
