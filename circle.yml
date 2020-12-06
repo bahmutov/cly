@@ -85,7 +85,24 @@ jobs:
             npm init -y
             npm i -D cypress@6
             node ~/repo/src/index.js init
-            npx cypress run
+            npx cypress-expect run --passing 1
+
+  test-6-typescript:
+    executor: cypress/base-12
+    working_directory: ~/repo
+    steps:
+      - load_workspace
+      - run:
+          name: Test scaffolding Cypress v6 in TypeScript
+          environment:
+            DEBUG: '@bahmutov/cly'
+          command: |
+            mkdir /tmp/test-6
+            cd /tmp/test-6
+            npm init -y
+            npm i -D cypress@6
+            node ~/repo/src/index.js init --typescript
+            npx cypress-expect run --passing 3
 
 workflows:
   version: 2
@@ -95,14 +112,12 @@ workflows:
     - test-4:
         requires:
           - build
-
-    # disable for now until full TypeScript is passing
-    # https://github.com/cypress-io/cypress/issues/7459
-    # probably Cypress v4.6.1+
-    # - test-4-typescript:
-    #     requires:
-    #       - build
-
+    - test-4-typescript:
+        requires:
+          - build
     - test-6:
+        requires:
+          - build
+    - test-6-typescript:
         requires:
           - build
