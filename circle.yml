@@ -123,6 +123,7 @@ jobs:
             npm i -D cypress@6
             npm i cypress-expect typescript
             node ~/repo/src/index.js init --bare
+            cat cypress.json
             npx cypress-expect run --passing 1
 
 workflows:
