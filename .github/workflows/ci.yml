@@ -48,6 +48,7 @@ jobs:
           npm i -D cypress
           npm i cypress-expect
           node /home/runner/work/cly/cly/src/index.js init --bare
+          cat cypress.json
           npx cypress-expect run --passing 1
 
   release:
