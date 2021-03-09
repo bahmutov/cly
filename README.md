@@ -29,6 +29,8 @@ see https://on.cypress.io/configuration
 
 Note: if there are Cypress files or folders already, the `cly` will stop.
 
+Watch this utility in action in [this video](https://youtu.be/g9ToLSD_lbQ)
+
 ### TypeScript
 
 You can scaffold Cypress specs written in TypeScript
