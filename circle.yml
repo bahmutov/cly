@@ -106,6 +106,25 @@ jobs:
             node ~/repo/src/index.js init --typescript
             npx cypress-expect run --passing 3
 
+
+  test-6-bare:
+    executor: cypress/base-12
+    working_directory: ~/repo
+    steps:
+      - load_workspace
+      - run:
+          name: Test scaffolding Cypress v6 bare
+          environment:
+            DEBUG: '@bahmutov/cly'
+          command: |
+            mkdir /tmp/test-6-bare
+            cd /tmp/test-6-bare
+            npm init -y
+            npm i -D cypress@6
+            npm i cypress-expect typescript
+            node ~/repo/src/index.js init --bare
+            npx cypress-expect run --passing 1
+
 workflows:
   version: 2
   workflow:
@@ -121,5 +140,8 @@ workflows:
         requires:
           - build
     - test-6-typescript:
+        requires:
+          - build
+    - test-6-bare:
         requires:
           - build
