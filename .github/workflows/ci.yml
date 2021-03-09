@@ -53,9 +53,7 @@ jobs:
 
   release:
     runs-on: ubuntu-20.04
-    needs:
-      - test-default
-      - test-bare
+    needs: [test-default, test-bare]
     steps:
       - name: Checkout 🛎
         uses: actions/checkout@v2
