@@ -4,8 +4,8 @@ on:
     branches:
       - master
 jobs:
-  test:
-    runs-on: ubuntu-latest
+  test-default:
+    runs-on: ubuntu-20.04
     steps:
       - name: Checkout 🛎
         uses: actions/checkout@v2
@@ -19,13 +19,48 @@ jobs:
       - name: Run e2e test 🚀
         run: |
           echo $PWD
-          mkdir /tmp/test-6
-          cd /tmp/test-6
+          mkdir /tmp/test-repo
+          cd /tmp/test-repo
           npm init -y
           npm i -D cypress
           npm i cypress-expect
           node /home/runner/work/cly/cly/src/index.js init
           npx cypress-expect run --passing 1
+
+  test-bare:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout 🛎
+        uses: actions/checkout@v2
+
+      - name: Install NPM dependencies 📦
+        uses: bahmutov/npm-install@v1
+
+      - name: Run tests 🧪
+        run: npm test
+
+      - name: Run e2e test 🚀
+        run: |
+          echo $PWD
+          mkdir /tmp/test-bare
+          cd /tmp/test-bare
+          npm init -y
+          npm i -D cypress
+          npm i cypress-expect
+          node /home/runner/work/cly/cly/src/index.js init --bare
+          npx cypress-expect run --passing 1
+
+  release:
+    runs-on: ubuntu-20.04
+    needs:
+      - test-default
+      - test-bare
+    steps:
+      - name: Checkout 🛎
+        uses: actions/checkout@v2
+
+      - name: Install NPM dependencies 📦
+        uses: bahmutov/npm-install@v1
 
       - name: Semantic Release 🚀
         uses: cycjimmy/semantic-release-action@v2
