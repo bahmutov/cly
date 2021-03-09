@@ -20,4 +20,4 @@ You can configure project options in the [../cypress.json](../cypress.json) file
 - [Cypress TypeScript support](https://on.cypress.io/typescript)
 - [https://github.com/cypress.io/cypress](https://github.com/cypress.io/cypress)
 - [https://docs.cypress.io/](https://docs.cypress.io/)
-- [Writing your first Cypress test](http://on.cypress.io/intro)
+- [Writing your first Cypress test](https://on.cypress.io/intro)

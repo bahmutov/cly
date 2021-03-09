@@ -27,6 +27,8 @@ you can configure additional options in cypress.json file
 see https://on.cypress.io/configuration
 ```
 
+Note: if there are Cypress files or folders already, the `cly` will stop.
+
 ### TypeScript
 
 You can scaffold Cypress specs written in TypeScript
@@ -37,7 +39,15 @@ npx @bahmutov/cly init --typescript
 npx @bahmutov/cly init -t
 ```
 
-Note: if there are Cypress files or folders already, the `cly` will stop.
+### Bare
+
+Sometimes you just need a spec file, without any fixtures, support, or plugin files. Use `--bare` option to scaffold the minimal `cypress` test
+
+```sh
+npx @bahmutov/cly init --bare
+# or equivalent
+npx @bahmutov/cly init -b
+```
 
 ### Version
 
