@@ -1,10 +1,13 @@
 #!/usr/bin/env node
+// @ts-check
 
 'use strict'
 
 const shell = require('shelljs')
 const debug = require('debug')('@bahmutov/cly')
 const path = require('path')
+
+const DEFAULT_SCAFFOLD_VERSION = '6'
 
 const initCommand = args => {
   debug('command arguments %o', args)
@@ -29,7 +32,6 @@ const initCommand = args => {
     throw new Error('Unknown Cypress version to scaffold')
   }
 
-  const DEFAULT_SCAFFOLD_VERSION = '4'
   let scaffoldedVersion = args.cypressVersion
 
   if (scaffoldedVersion.indexOf('.')) {
@@ -39,7 +41,10 @@ const initCommand = args => {
 
   let sourceFolder = path.join(__dirname, '..', scaffoldedVersion)
 
-  if (args.typescript) {
+  if (args.bare) {
+    debug('scaffolding bare specs')
+    sourceFolder += 'bare'
+  } else if (args.typescript) {
     debug('scaffolding TypeScript specs')
     sourceFolder += 'ts'
   }
@@ -80,7 +85,7 @@ require('yargs')
     desc: 'scaffold Cypress tests',
     builder: {
       cypressVersion: {
-        default: '4',
+        default: DEFAULT_SCAFFOLD_VERSION,
         alias: 'cv',
         desc: 'for Cypress version',
         type: 'string'
@@ -89,6 +94,12 @@ require('yargs')
         default: false,
         alias: 't',
         desc: 'scaffold using TypeScript',
+        type: 'boolean'
+      },
+      bare: {
+        default: false,
+        alias: 'b',
+        desc: 'bare spec file, no support, no plugins',
         type: 'boolean'
       }
     },
