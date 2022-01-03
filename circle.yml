@@ -106,6 +106,23 @@ jobs:
             node ~/repo/src/index.js init --typescript
             npx cypress-expect run --passing 3
 
+  test-9-typescript:
+    executor: cypress/base-14
+    working_directory: ~/repo
+    steps:
+      - load_workspace
+      - run:
+          name: Test scaffolding Cypress v9 in TypeScript
+          environment:
+            DEBUG: '@bahmutov/cly'
+          command: |
+            mkdir /tmp/test-9
+            cd /tmp/test-9
+            npm init -y
+            npm i -D cypress@9
+            npm i cypress-expect typescript
+            node ~/repo/src/index.js init --typescript
+            npx cypress-expect run --passing 3
 
   test-6-bare:
     executor: cypress/base-12
@@ -141,6 +158,9 @@ workflows:
         requires:
           - build
     - test-6-typescript:
+        requires:
+          - build
+    - test-9-typescript:
         requires:
           - build
     - test-6-bare:
