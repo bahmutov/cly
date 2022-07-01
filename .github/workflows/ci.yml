@@ -8,10 +8,13 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - name: Checkout 🛎
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
+
+      - name: Print files 🖨
+        run: ls -la
 
       - name: Install NPM dependencies 📦
-        uses: bahmutov/npm-install@v1.8.15
+        uses: bahmutov/npm-install@v1
 
       - name: Run tests 🧪
         run: npm test
@@ -31,10 +34,13 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - name: Checkout 🛎
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
+
+      - name: Print files 🖨
+        run: ls -la
 
       - name: Install NPM dependencies 📦
-        uses: bahmutov/npm-install@v1.8.15
+        uses: bahmutov/npm-install@v1
 
       - name: Run tests 🧪
         run: npm test
@@ -56,10 +62,13 @@ jobs:
     needs: [test-default, test-bare]
     steps:
       - name: Checkout 🛎
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
+
+      - name: Print files 🖨
+        run: ls -la
 
       - name: Install NPM dependencies 📦
-        uses: bahmutov/npm-install@v1.8.15
+        uses: bahmutov/npm-install@v1
 
       - name: Semantic Release 🚀
         uses: cycjimmy/semantic-release-action@v2
