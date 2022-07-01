@@ -7,7 +7,7 @@ const shell = require('shelljs')
 const debug = require('debug')('@bahmutov/cly')
 const path = require('path')
 
-const DEFAULT_SCAFFOLD_VERSION = '6'
+const DEFAULT_SCAFFOLD_VERSION = '10'
 
 const initCommand = args => {
   debug('command arguments %o', args)
@@ -62,7 +62,12 @@ const initCommand = args => {
   }
 
   debug('using scaffold folder %s', sourceFolder)
-  shell.cp(path.join(sourceFolder, 'cypress.json'), process.cwd())
+  if (scaffoldedVersion < 10) {
+    shell.cp(path.join(sourceFolder, 'cypress.json'), process.cwd())
+  } else {
+    shell.cp(path.join(sourceFolder, 'cypress.config.js'), process.cwd())
+  }
+
   shell.cp('-r', path.join(sourceFolder, 'cypress'), process.cwd())
   if (args.typescript) {
     shell.cp(path.join(sourceFolder, 'tsconfig.json'), process.cwd())
