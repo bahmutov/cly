@@ -16,6 +16,9 @@ jobs:
       - name: Print Node version 🖨
         run: node -v
 
+      - name: Print NPM version 🖨
+        run: npm -v
+
       - name: Install NPM dependencies 📦
         uses: bahmutov/npm-install@v1
 
@@ -44,6 +47,9 @@ jobs:
 
       - name: Print Node version 🖨
         run: node -v
+
+      - name: Print NPM version 🖨
+        run: npm -v
 
       - name: Install NPM dependencies 📦
         uses: bahmutov/npm-install@v1
@@ -75,6 +81,9 @@ jobs:
 
       - name: Print Node version 🖨
         run: node -v
+
+      - name: Print NPM version 🖨
+        run: npm -v
 
       - name: Install NPM dependencies 📦
         uses: bahmutov/npm-install@v1
