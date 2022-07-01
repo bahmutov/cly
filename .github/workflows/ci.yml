@@ -39,7 +39,7 @@ jobs:
       - name: Run tests 🧪
         run: npm test
 
-      - name: Run e2e test 🚀
+      - name: Run e2e test with --bare 🚀
         run: |
           echo $PWD
           mkdir /tmp/test-bare
@@ -48,7 +48,7 @@ jobs:
           npm i -D cypress
           npm i cypress-expect
           node /home/runner/work/cly/cly/src/index.js init --bare
-          cat cypress.json
+          cat cypress.config.js
           npx cypress-expect run --passing 1
 
   release:
