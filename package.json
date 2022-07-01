@@ -91,8 +91,8 @@
     "mocha": "5.2.0",
     "nsp": "3.2.1",
     "pre-git": "3.17.1",
-    "prettier-standard": "8.0.1",
-    "standard": "16.0.4",
+    "prettier-standard": "16.4.1",
+    "standard": "17.0.0",
     "semantic-release": "17.4.7"
   },
   "dependencies": {
