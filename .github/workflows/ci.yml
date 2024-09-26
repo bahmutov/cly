@@ -5,7 +5,7 @@ on:
       - master
 jobs:
   test-default:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-24.04
     steps:
       - name: Checkout 🛎
         uses: actions/checkout@v3
@@ -37,7 +37,7 @@ jobs:
           npx cypress-expect run --passing 1
 
   test-bare:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-24.04
     steps:
       - name: Checkout 🛎
         uses: actions/checkout@v3
@@ -70,7 +70,7 @@ jobs:
           npx cypress-expect run --passing 1
 
   release:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-24.04
     needs: [test-default, test-bare]
     steps:
       - name: Checkout 🛎
